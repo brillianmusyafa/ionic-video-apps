@@ -10,7 +10,6 @@ import { VideosPageModule } from '../pages/videos/videos.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { StreamingMedia } from '@ionic-native/streaming-media';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { VideoProvider } from '../providers/video/video';
 import { AdMobFree } from '@ionic-native/admob-free';
@@ -37,7 +36,6 @@ import { Market } from '@ionic-native/market';
     Market,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    StreamingMedia,
     YoutubeVideoPlayer,
     VideoProvider,
     AdMobFree
