@@ -19,6 +19,7 @@ import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-m
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { VideoProvider } from '../providers/video/video';
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+import { Market } from '@ionic-native/market';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
   ],
   providers: [
     StatusBar,
+    Market,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StreamingMedia,
