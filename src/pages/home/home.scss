@@ -21,11 +21,6 @@ page-home {
 		margin: 0px;
 		width: calc(100%);
 	}
-	.footer{
-		text-align: center;
-		background-color: color($colors,primary);
-		color: white;
-	}
 
 	.full{
 		background-size: cover;
@@ -47,8 +42,12 @@ page-home {
 	}
 	ion-card img {
 		display: block;
-		width: 100px;
+		width: 100%;
 		height: 100px;
 		margin: 0 auto;
+	}
+
+	ion-label{
+		white-space: normal;
 	}
 }

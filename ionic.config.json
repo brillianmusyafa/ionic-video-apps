@@ -1,6 +1,6 @@
 {
   "name": "simas_playstore",
-  "app_id": "",
+  "app_id": "80b9d0a0",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

@@ -1,15 +1,43 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>SIMAS</ion-title>
+      <ion-title>Kumpulan Video</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <img src="assets/imgs/logo_tegal.png" class="logo">
+    <img src="assets/imgs/logo.png" class="logo">
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <!-- <button menuClose ion-item (click)="openPage('home')">
+        <ion-icon name="home" item-start></ion-icon>
+        Home
+      </button> -->
+      <button menuClose ion-item (click)="openPage('home')">
+        <ion-icon name="list" item-start></ion-icon>
+        Lattest
+      </button>
+      <button menuClose ion-item (click)="openPage('favorites')">
+        <ion-icon name="heart" item-start></ion-icon>
+        Favorite
+      </button>
+      <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
+      </button> -->
+      <button menuClose ion-item (click)="openMarket()">
+        <ion-icon name="share" item-start></ion-icon>
+        Aplikasi Lain
+      </button>
+      <button menuClose ion-item (click)="openPage()">
+        <ion-icon name="share" item-start></ion-icon>
+        Share
+      </button>
+      <button menuClose ion-item (click)="openPage()">
+        <ion-icon name="star" item-start></ion-icon>
+        Rate
+      </button>
+      <button menuClose ion-item (click)="openPage('about')">
+        <ion-icon name="eye" item-start></ion-icon>
+        Tentang Aplikasi
       </button>
     </ion-list>
   </ion-content>

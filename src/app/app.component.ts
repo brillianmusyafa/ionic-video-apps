@@ -4,9 +4,13 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { AboutPage } from '../pages/about/about';
-import { KecamatanPage } from '../pages/kecamatan/kecamatan';
+import { CategoryPage } from '../pages/category/category';
+import { FavoritesPage } from '../pages/favorites/favorites';
+import { Market } from '@ionic-native/market';
+
+
+
 
 @Component({
   templateUrl: 'app.html'
@@ -15,21 +19,13 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = HomePage;
+  page: any;
 
-  pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public market:Market) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      // { title: 'List', component: ListPage },
-      { title: 'About', component: AboutPage}
-    ];
 
-  }
-
+}
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -42,6 +38,22 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    switch (page) {
+      case "favorites":
+      this.page = FavoritesPage;
+      break;
+      case "about":
+      this.page = AboutPage;
+      break;
+      
+      default:
+      this.page = HomePage;
+      break;
+    }
+    this.nav.setRoot(this.page);
+  }
+
+  openMarket(){
+    this.market.open('BrillianApp');
   }
 }

@@ -5,24 +5,30 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { AboutPage } from '../pages/about/about';
-import { KecamatanPage } from '../pages/kecamatan/kecamatan';
-import { DetailKecamatanPage } from '../pages/detail-kecamatan/detail-kecamatan';
+import { CategoryPage } from '../pages/category/category';
+import { VideosPage} from '../pages/videos/videos';
+import { FavoritesPage } from '../pages/favorites/favorites';
+import { PlayVideoPage } from '../pages/play-video/play-video';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { DataProvider } from '../providers/data/data';
+
+import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { VideoProvider } from '../providers/video/video';
+import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     AboutPage,
-    KecamatanPage,
-    DetailKecamatanPage,
+    CategoryPage,
+    VideosPage,
+    FavoritesPage,
+    PlayVideoPage
   ],
   imports: [
     BrowserModule,
@@ -33,16 +39,21 @@ import { DataProvider } from '../providers/data/data';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     AboutPage,
-    KecamatanPage,
-    DetailKecamatanPage,
+    CategoryPage,
+    VideosPage,
+    FavoritesPage,
+    PlayVideoPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DataProvider
+    StreamingMedia,
+    YoutubeVideoPlayer,
+    VideoProvider,
+    AdMobFree
+
   ]
 })
 export class AppModule {}
