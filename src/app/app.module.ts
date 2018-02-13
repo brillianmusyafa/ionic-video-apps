@@ -5,33 +5,24 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { AboutPage } from '../pages/about/about';
-import { CategoryPage } from '../pages/category/category';
-import { VideosPage} from '../pages/videos/videos';
-import { FavoritesPage } from '../pages/favorites/favorites';
-import { PlayVideoPage } from '../pages/play-video/play-video';
-
+import { VideosPageModule } from '../pages/videos/videos.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media';
+import { StreamingMedia } from '@ionic-native/streaming-media';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { VideoProvider } from '../providers/video/video';
-import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
+import { AdMobFree } from '@ionic-native/admob-free';
 import { Market } from '@ionic-native/market';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    AboutPage,
-    CategoryPage,
-    VideosPage,
-    FavoritesPage,
-    PlayVideoPage
+    HomePage
   ],
   imports: [
+    VideosPageModule,
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
@@ -39,12 +30,7 @@ import { Market } from '@ionic-native/market';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    AboutPage,
-    CategoryPage,
-    VideosPage,
-    FavoritesPage,
-    PlayVideoPage
+    HomePage
   ],
   providers: [
     StatusBar,

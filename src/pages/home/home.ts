@@ -4,12 +4,9 @@ import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 
 import { VideosPage } from '../videos/videos';
-import { FavoritesPage } from '../favorites/favorites';
-import { CategoryPage } from '../category/category';
 
 
 import { VideoProvider } from '../../providers/video/video';
-import 'rxjs/add/operator/map';
 
 import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
 
