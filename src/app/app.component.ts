@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { Market } from '@ionic-native/market';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 
@@ -20,7 +20,9 @@ export class MyApp {
   rootPage: any = HomePage;
   page: any;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public market:Market) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
+    public market:Market,
+    public socialSharing: SocialSharing) {
     this.initializeApp();
 
 
@@ -53,6 +55,15 @@ export class MyApp {
   }
 
   openMarket(){
-    this.market.open('BrillianApp');
+    this.market.open('com.brilliansolution');
+  }
+
+  shareApp(){
+    let message = "";
+    let subject = "";
+    let file = null;
+    let url = "https://play.google.com/store/apps/details?id=com.brilliansolution.kumpulanvideo";
+
+    this.socialSharing.share(message,subject,file,url);
   }
 }

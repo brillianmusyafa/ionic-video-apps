@@ -14,6 +14,7 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { VideoProvider } from '../providers/video/video';
 import { AdMobFree } from '@ionic-native/admob-free';
 import { Market } from '@ionic-native/market';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { Market } from '@ionic-native/market';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     YoutubeVideoPlayer,
     VideoProvider,
-    AdMobFree
+    AdMobFree,
+    SocialSharing
 
   ]
 })
