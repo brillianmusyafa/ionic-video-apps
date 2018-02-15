@@ -15,6 +15,7 @@ import { VideoProvider } from '../providers/video/video';
 import { AdMobFree } from '@ionic-native/admob-free';
 import { Market } from '@ionic-native/market';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { AppRate } from '@ionic-native/app-rate';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     YoutubeVideoPlayer,
     VideoProvider,
     AdMobFree,
-    SocialSharing
+    SocialSharing,
+    AppRate
 
   ]
 })

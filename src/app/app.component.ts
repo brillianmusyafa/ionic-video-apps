@@ -8,7 +8,7 @@ import { AboutPage } from '../pages/about/about';
 import { FavoritesPage } from '../pages/favorites/favorites';
 import { Market } from '@ionic-native/market';
 import { SocialSharing } from '@ionic-native/social-sharing';
-
+import { AppRate } from '@ionic-native/app-rate';
 
 
 @Component({
@@ -22,16 +22,18 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
     public market:Market,
-    public socialSharing: SocialSharing) {
+    public socialSharing: SocialSharing,
+    public appRate: AppRate) {
     this.initializeApp();
 
 
-}
+  }
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      // this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString("#004ba0"); // change color  
       this.splashScreen.hide();
     });
   }
@@ -55,7 +57,7 @@ export class MyApp {
   }
 
   openMarket(){
-    this.market.open('com.brilliansolution');
+    this.market.search('com.brilliansolution');
   }
 
   shareApp(){
@@ -65,5 +67,29 @@ export class MyApp {
     let url = "https://play.google.com/store/apps/details?id=com.brilliansolution.kumpulanvideo";
 
     this.socialSharing.share(message,subject,file,url);
+  }
+
+  rateApp(){
+    // set certain preferences
+    this.appRate.preferences.storeAppURL = {
+      // ios: '<app_id>',
+      android: 'market://details?id=com.brilliansolution.kumpulanvideo'
+      // windows: 'ms-windows-store://review/?ProductId=<store_id>'
+    };
+    console.log('rate');
+    
+
+    // or, override the whole preferences object
+    // this.appRate.preferences = {
+    //   usesUntilPrompt: 5,
+    //   storeAppURL: {
+    //     // ios: '<app_id>',
+    //     android: 'market://details?id=com.brilliansolution.kumpulanvideo'
+    //     // windows: 'ms-windows-store://review/?ProductId=<store_id>'
+    //   }
+    // };
+
+    // this.appRate.promptForRating(false);
+    this.appRate.promptForRating(true);
   }
 }

@@ -50,4 +50,9 @@ page-home {
 	ion-label{
 		white-space: normal;
 	}
+
+	item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+	    width: 140px;
+	    height: 80px;
+	}
 }

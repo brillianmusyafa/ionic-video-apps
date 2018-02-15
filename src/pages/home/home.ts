@@ -18,6 +18,7 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  global_var: number = 0;
 	data_home: any;
   loading:any;
 
@@ -60,11 +61,14 @@ export class HomePage {
     }
 
     openDetail(item){
-      console.log(item);
+      // console.log(item);
       this.navCtrl.push(VideosPage,{item});
     }
 
     playVideo(item){
+      this.global_var +=1;
+
+      console.log(this.global_var);
       this.youtube.openVideo(item.video_id);
     }
 
