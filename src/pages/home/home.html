@@ -3,7 +3,7 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>Choose your video</ion-title>
+		<ion-title>Video</ion-title>
 	</ion-navbar>
 </ion-header>
 
@@ -12,10 +12,10 @@
   <ion-item *ngFor="let item of data_home" (click)="playVideo(item)">
     <ion-thumbnail item-start>
       <img src="{{item.video_thumbnail}}">
+      <div class="duration">{{item.video_duration}}</div>
     </ion-thumbnail>
     <h3>{{item.video_title}}</h3>
-    <!-- <p>Hayao Miyazaki • 1988</p> -->
-    <!-- <button ion-button clear item-end>View</button> -->
   </ion-item>
+
 </ion-list>
 </ion-content>

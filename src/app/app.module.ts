@@ -16,6 +16,8 @@ import { AdMobFree } from '@ionic-native/admob-free';
 import { Market } from '@ionic-native/market';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AppRate } from '@ionic-native/app-rate';
+import { GlobalProvider } from '../providers/global/global';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { AppRate } from '@ionic-native/app-rate';
     VideoProvider,
     AdMobFree,
     SocialSharing,
-    AppRate
+    AppRate,
+    GlobalProvider,
+    OneSignal
 
   ]
 })

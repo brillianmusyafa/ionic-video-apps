@@ -1,31 +1,20 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Kumpulan Video</ion-title>
+      <ion-title>{{app_name}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <img src="assets/imgs/logo.png" class="logo">
+    <img src="{{logo}}" class="logo">
     <ion-list>
-      <!-- <button menuClose ion-item (click)="openPage('home')">
-        <ion-icon name="home" item-start></ion-icon>
-        Home
-      </button> -->
       <button menuClose ion-item (click)="openPage('home')">
         <ion-icon name="list" item-start></ion-icon>
-        Lattest
+        Latest
       </button>
-      <!-- <button menuClose ion-item (click)="openPage('favorites')">
-        <ion-icon name="heart" item-start></ion-icon>
-        Favorite
-      </button> -->
-      <!-- <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button> -->
       <button menuClose ion-item (click)="openMarket()">
         <ion-icon name="apps" item-start></ion-icon>
-        Aplikasi Lainnya
+        Other Aplication
       </button>
       <button menuClose ion-item (click)="shareApp()">
         <ion-icon name="share" item-start></ion-icon>
@@ -35,9 +24,9 @@
         <ion-icon name="star" item-start></ion-icon>
         Rate
       </button>
-      <button menuClose ion-item (click)="openPage('about')">
+      <button menuClose ion-item (click)="openIklan()">
         <ion-icon name="eye" item-start></ion-icon>
-        Tentang Aplikasi
+        About Aplikasi
       </button>
     </ion-list>
   </ion-content>

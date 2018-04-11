@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GlobalProvider } from '../global/global';
 
 /*
   Generated class for the VideoProvider provider.
@@ -11,14 +12,14 @@ import { Injectable } from '@angular/core';
 export class VideoProvider {
 	// app_id:string = "1";
 	// url:string= "http://localhost:8000/api/1/video";
-	url:string = "http://project.brilliansolution.com/kumpulan_video/public/api/1/video"
-  constructor(public http: HttpClient) {
+	
+  constructor(public http: HttpClient, public global: GlobalProvider) {
     console.log('Hello VideoProvider Provider');
   }
 
   getAllVideo(){
   	return new Promise(resolve => {
-  		this.http.get(this.url).subscribe(data=>{
+  		this.http.get(this.global.url).subscribe(data=>{
   			resolve(data);
   		},err=>{
   			console.log(err);

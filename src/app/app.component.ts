@@ -10,6 +10,11 @@ import { Market } from '@ionic-native/market';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { AppRate } from '@ionic-native/app-rate';
 
+import { OneSignal } from '@ionic-native/onesignal';
+
+import { GlobalProvider } from '../providers/global/global';
+import { enableProdMode } from '@angular/core';
+enableProdMode();
 
 @Component({
   templateUrl: 'app.html'
@@ -19,11 +24,18 @@ export class MyApp {
 
   rootPage: any = HomePage;
   page: any;
+  app_name: any;
+  logo: string;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
     public market:Market,
     public socialSharing: SocialSharing,
-    public appRate: AppRate) {
+    public appRate: AppRate,
+    public global:GlobalProvider,
+    public oneSignal: OneSignal
+    ) {
+    // app_name
+    this.app_name = this.global.app_name;
     this.initializeApp();
 
 
@@ -35,6 +47,28 @@ export class MyApp {
       // this.statusBar.styleDefault();
       this.statusBar.backgroundColorByHexString("#004ba0"); // change color  
       this.splashScreen.hide();
+
+      // show logo
+      this.logo = this.global.logo;
+
+      this.global.showRewardAd();
+
+      this.global.showBannerAd();
+
+      // oneSignal
+      this.oneSignal.startInit(this.global.one_signal_key, this.global.one_signal_sender);
+
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
+      this.oneSignal.handleNotificationReceived().subscribe(() => {
+        // do something when notification is received
+      });
+
+      this.oneSignal.handleNotificationOpened().subscribe(() => {
+        // do something when a notification is opened
+      });
+
+      this.oneSignal.endInit();
     });
   }
 
@@ -57,39 +91,24 @@ export class MyApp {
   }
 
   openMarket(){
-    this.market.search('com.brilliansolution');
+    this.market.search(this.global.market);
   }
 
   shareApp(){
     let message = "";
     let subject = "";
     let file = null;
-    let url = "https://play.google.com/store/apps/details?id=com.brilliansolution.kumpulanvideo";
 
-    this.socialSharing.share(message,subject,file,url);
+    this.socialSharing.share(message,subject,file,this.global.share_url);
   }
 
   rateApp(){
     // set certain preferences
     this.appRate.preferences.storeAppURL = {
       // ios: '<app_id>',
-      android: 'market://details?id=com.brilliansolution.kumpulanvideo'
+      android: this.global.rate_app
       // windows: 'ms-windows-store://review/?ProductId=<store_id>'
     };
-    console.log('rate');
-    
-
-    // or, override the whole preferences object
-    // this.appRate.preferences = {
-    //   usesUntilPrompt: 5,
-    //   storeAppURL: {
-    //     // ios: '<app_id>',
-    //     android: 'market://details?id=com.brilliansolution.kumpulanvideo'
-    //     // windows: 'ms-windows-store://review/?ProductId=<store_id>'
-    //   }
-    // };
-
-    // this.appRate.promptForRating(false);
     this.appRate.promptForRating(true);
   }
 }

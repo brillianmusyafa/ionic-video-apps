@@ -8,9 +8,8 @@ import { VideosPage } from '../videos/videos';
 
 import { VideoProvider } from '../../providers/video/video';
 
-import { AdMobFree, AdMobFreeBannerConfig } from '@ionic-native/admob-free';
-
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { GlobalProvider } from '../../providers/global/global';
 
 
 @Component({
@@ -23,29 +22,15 @@ export class HomePage {
   loading:any;
 
   constructor(public navCtrl: NavController, 
+    public global:GlobalProvider,
     public loadingCtrl: LoadingController, 
-    public videoProv: VideoProvider, 
-    public admobFree: AdMobFree, 
+    public videoProv: VideoProvider,
     public youtube: YoutubeVideoPlayer) {
     this.getDataHome();
+  }
 
-
-    const bannerConfig: AdMobFreeBannerConfig = {
-      // add your config here
-      // for the sake of this example we will just use the test config
-      id: "ca-app-pub-7921716616365431/3662793553",
-      // isTesting: true,
-      autoShow: true
-    };
-
-    this.admobFree.banner.config(bannerConfig);
-
-    this.admobFree.banner.prepare()
-    .then(() => {
-      // banner Ad is ready
-      // if we set autoShow to false, then we will need to call the show method here
-    })
-    .catch(e => console.log(e));
+  ionViewDidLeave(){
+    this.global.showRewardAd();
   }
 
   getDataHome(){
@@ -66,9 +51,11 @@ export class HomePage {
     }
 
     playVideo(item){
-      this.global_var +=1;
+      // this.global.showInterstitialAd();
+      // this.global.showBannerAd();
+      // this.global_var +=1;
 
-      console.log(this.global_var);
+      // console.log(this.global_var);
       this.youtube.openVideo(item.video_id);
     }
 
